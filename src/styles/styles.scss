@@ -1,4 +1,17 @@
+@import '../../node_modules/mc-components/lib/styles/index';
+
+// pages
+@import './pages/home';
+
+html {
+  font-size: 10px;
+}
+
 body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
   font-size: 100%;
+}
+
+p {
+  font-size: 1.4rem;
 }

@@ -14,7 +14,13 @@ export default {
 
   'logout.button': 'LOGOUT',
 
+  // Home Page
+  'home.header': 'MasterClass React Starter',
+  'home.subheader': 'Welcome',
   'home.welcome': 'Welcome to MasterClass React Starter',
+
+  // Not Found Page
+  'notfound.message': '404 page not found :(',
 
   // errors
   'email.presence': 'You must enter an email to continue',
