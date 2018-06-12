@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import history from '../utils/history'
-import RouteFromPath from './routes/RouteFromPath'
+import RouteFromPath from '../components/routes/RouteFromPath'
 import routes from '../routes'
 
 const App = () => (

@@ -1,7 +1,12 @@
 @import '../../node_modules/mc-components/lib/styles/index';
 
+// components
+@import './components/logo';
+
 // pages
 @import './pages/home';
+
+$red: 'green';
 
 html {
   font-size: 10px;

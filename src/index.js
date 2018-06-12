@@ -7,8 +7,8 @@ import includes from 'lodash/includes'
 import en from 'react-intl/locale-data/en'
 import es from 'react-intl/locale-data/es'
 
-import configureStore from './store/configureStore'
-import App from './components/App'
+import configureStore from './redux/store/configureStore'
+import App from './app/App'
 import locales from './locales'
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from './constants/constants'
 import './styles/styles.scss'
@@ -56,7 +56,7 @@ const renderApp = (Component) => {
 renderApp(App)
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept('./app/App', () => {
     renderApp(App)
   })
 }

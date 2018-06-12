@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import { RoundedBox } from 'mc-components'
 
-import logo from '../assets/masterclass-logo.svg'
+import Logo from '../../components/common/Logo'
 
 class HomePage extends PureComponent {
   static propTypes = {
@@ -14,7 +14,7 @@ class HomePage extends PureComponent {
 
     return (
       <div className='home-page'>
-        <img className='logo' src={logo} alt='logo' />
+        <Logo />
         <RoundedBox
           header={intl.formatMessage({ id: 'home.header' })}
           subheader={intl.formatMessage({ id: 'home.subheader' })}
