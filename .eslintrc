@@ -27,7 +27,8 @@
   "rules": {
     "max-len": ["error", 80, {
       "ignoreStrings": true,
-      "ignoreComments": true
+      "ignoreComments": true,
+      "ignoreTemplateLiterals": true
     }],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single", { "avoidEscape": true }],
@@ -45,6 +46,7 @@
     "consistent-return": 0,
     "no-shadow": 0,
     "no-param-reassign": 0,
+    "function-paren-newline": 0,
     "class-methods-use-this": ["error", { "exceptMethods": [
       "componentDidMount",
       "componentDidUpdate",

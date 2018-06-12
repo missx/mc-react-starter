@@ -20,12 +20,12 @@ export default {
     'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, 'src/index.js'),
+    path.resolve(__dirname, '../src/index.js'),
   ],
   target: 'web',
   mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -43,7 +43,7 @@ export default {
       inject: true,
     }),
     new Dotenv({
-      path: path.resolve(__dirname, `.env.${process.env.ENV || 'dev'}`),
+      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'dev'}`),
       systemvars: true,
     }),
   ],

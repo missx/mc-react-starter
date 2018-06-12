@@ -18,11 +18,11 @@ export default {
     extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'source-map',
-  entry: ['babel-polyfill', path.resolve(__dirname, 'server')],
+  entry: ['babel-polyfill', path.resolve(__dirname, '../server')],
   target: 'node',
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'server/build'),
+    path: path.resolve(__dirname, '../server/build'),
     publicPath: '/',
     filename: 'server.js',
   },
@@ -32,7 +32,7 @@ export default {
     new ExtractTextPlugin('styles.css'),
 
     new Dotenv({
-      path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
+      path: path.resolve(__dirname, `../.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
     }),
   ],

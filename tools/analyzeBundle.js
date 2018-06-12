@@ -1,15 +1,16 @@
-import webpack from 'webpack';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import config from '../webpack.config.prod';
+import webpack from 'webpack'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
-config.plugins.push(new BundleAnalyzerPlugin());
+import config from '../webpack/webpack.config.prod'
 
-const compiler = webpack(config);
+config.plugins.push(new BundleAnalyzerPlugin())
+
+const compiler = webpack(config)
 
 compiler.run((error, stats) => {
   if (error) {
-    throw new Error(error);
+    throw new Error(error)
   }
 
-  console.log(stats); // eslint-disable-line no-console
-});
+  console.log(stats) // eslint-disable-line no-console
+})
