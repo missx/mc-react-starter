@@ -1,17 +1,18 @@
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import Dotenv from 'dotenv-webpack';
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import path from 'path'
+import Dotenv from 'dotenv-webpack'
+import autoprefixer from 'autoprefixer'
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('development'),
   'process.env.BROWSER': true,
-  __DEV__: true
-};
+  __DEV__: true,
+}
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'eval-source-map',
   entry: [
@@ -19,14 +20,14 @@ export default {
     'react-hot-loader/patch',
     './src/webpack-public-path',
     'webpack-hot-middleware/client?reload=true',
-    path.resolve(__dirname, 'src/index.js')
+    path.resolve(__dirname, 'src/index.js'),
   ],
   target: 'web',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
@@ -37,14 +38,14 @@ export default {
       template: 'src/index.ejs',
       minify: {
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
       },
-      inject: true
+      inject: true,
     }),
     new Dotenv({
       path: path.resolve(__dirname, `.env.${process.env.ENV || 'dev'}`),
       systemvars: true,
-    })
+    }),
   ],
   module: {
     rules: [
@@ -57,7 +58,7 @@ export default {
           babelrc: false,
           presets: [['env', { modules: false }], 'react', 'stage-1'],
           plugins: ['react-hot-loader/babel'],
-        }
+        },
       },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
@@ -72,25 +73,23 @@ export default {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           }, {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [
-                require('autoprefixer')
-              ],
-              sourceMap: true
-            }
+              plugins: () => [autoprefixer],
+              sourceMap: true,
+            },
           }, {
             loader: 'sass-loader',
             options: {
               includePaths: [path.resolve(__dirname, 'src', 'scss')],
-              sourceMap: true
-            }
-          }
-        ]
-      }
-    ]
-  }
-};
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
+}

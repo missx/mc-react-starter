@@ -26,5 +26,5 @@ export default {
   'email.invalid': 'Debe ingresar un email válido',
   'password.presence': 'Debe ingresar una contraseña para continuar',
   'passwordConfirmation.presence': 'Debe confirmar su contraseña para continuar',
-  'passwordConfirmation.equality': 'Su confirmación de contraseña debe ser igual a la contraseña'
-};
+  'passwordConfirmation.equality': 'Su confirmación de contraseña debe ser igual a la contraseña',
+}

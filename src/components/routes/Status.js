@@ -1,21 +1,21 @@
-import React from 'react';
-import { number, object } from 'prop-types';
-import { Route } from 'react-router-dom';
+import React from 'react'
+import { number, object } from 'prop-types'
+import { Route } from 'react-router-dom'
 
 const Status = ({ code, children }) => (
   <Route
     render={({ staticContext }) => {
       if (staticContext) {
-        staticContext.status = code;
+        staticContext.status = code
       }
-      return children;
+      return children
     }}
   />
-);
+)
 
 Status.propTypes = {
   code: number.isRequired,
-  children: object.isRequired
-};
+  children: object.isRequired,
+}
 
-export default Status;
+export default Status

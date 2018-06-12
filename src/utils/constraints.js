@@ -1,4 +1,4 @@
-import validate from 'validate.js';
+import validate from 'validate.js'
 
 export const login = {
   email: {
@@ -7,8 +7,8 @@ export const login = {
   },
   password: {
     presence: { message: 'password.presence' },
-  }
-};
+  },
+}
 
 export const validations = (constraints, props = {}) =>
-  data => validate(data.toJS(), constraints, props) || {};
+  data => validate(data.toJS(), constraints, props) || {}

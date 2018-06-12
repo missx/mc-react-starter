@@ -1,21 +1,22 @@
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
-import Dotenv from 'dotenv-webpack';
-import CompressionPlugin from 'compression-webpack-plugin';
-import 'babel-polyfill';
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import WebpackMd5Hash from 'webpack-md5-hash'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import path from 'path'
+import Dotenv from 'dotenv-webpack'
+import CompressionPlugin from 'compression-webpack-plugin'
+import autoprefixer from 'autoprefixer'
+import 'babel-polyfill'
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.BROWSER': true,
-  __DEV__: false
-};
+  __DEV__: false,
+}
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'source-map',
   entry: ['babel-polyfill', path.resolve(__dirname, 'src/index')],
@@ -24,7 +25,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
   },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
@@ -48,23 +49,23 @@ export default {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
+        minifyURLs: true,
       },
-      inject: true
+      inject: true,
     }),
 
     new CompressionPlugin({
       asset: '[path]',
       algorithm: 'gzip',
       test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.8
+      threshold: 0,
+      minRatio: 2,
     }),
 
     new Dotenv({
       path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
-    })
+    }),
   ],
   module: {
     rules: [
@@ -83,26 +84,24 @@ export default {
               loader: 'css-loader',
               options: {
                 minimize: true,
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             }, {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
+                plugins: () => [autoprefixer],
+                sourceMap: true,
+              },
             }, {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      }
-    ]
-  }
-};
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
+      },
+    ],
+  },
+}

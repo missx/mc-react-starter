@@ -1,20 +1,21 @@
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import path from 'path';
-import webpackNodeExternals from 'webpack-node-externals';
-import Dotenv from 'dotenv-webpack';
-import 'babel-polyfill';
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import path from 'path'
+import webpackNodeExternals from 'webpack-node-externals'
+import Dotenv from 'dotenv-webpack'
+import autoprefixer from 'autoprefixer'
+import 'babel-polyfill'
 
 const GLOBALS = {
   window: {},
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.BROWSER': false,
-  __DEV__: false
-};
+  __DEV__: false,
+}
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'source-map',
   entry: ['babel-polyfill', path.resolve(__dirname, 'server')],
@@ -23,7 +24,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'server/build'),
     publicPath: '/',
-    filename: 'server.js'
+    filename: 'server.js',
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
@@ -33,10 +34,10 @@ export default {
     new Dotenv({
       path: path.resolve(__dirname, `.env.${process.env.ENV || 'prod'}`),
       systemvars: true,
-    })
+    }),
   ],
   externals: [webpackNodeExternals({
-    whitelist: ['actioncable']
+    whitelist: ['actioncable'],
   })],
   module: {
     rules: [
@@ -55,26 +56,24 @@ export default {
               loader: 'css-loader',
               options: {
                 minimize: true,
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             }, {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
+                plugins: () => [autoprefixer],
+                sourceMap: true,
+              },
             }, {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      }
-    ]
-  }
-};
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
+      },
+    ],
+  },
+}

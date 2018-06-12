@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import { Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import React, { Fragment } from 'react'
+import { Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
-import RouteFromPath from '../src/components/routes/RouteFromPath';
-import routes from '../src/routes';
+import RouteFromPath from '../src/components/routes/RouteFromPath'
+import routes from '../src/routes'
 
 const App = () => (
   <Fragment>
@@ -19,6 +19,6 @@ const App = () => (
       }
     </Switch>
   </Fragment>
-);
+)
 
-export default App;
+export default App

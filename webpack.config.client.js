@@ -1,19 +1,20 @@
-import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import AssetsPlugin from 'assets-webpack-plugin';
-import path from 'path';
-import Dotenv from 'dotenv-webpack';
-import 'babel-polyfill';
+import webpack from 'webpack'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import AssetsPlugin from 'assets-webpack-plugin'
+import path from 'path'
+import Dotenv from 'dotenv-webpack'
+import autoprefixer from 'autoprefixer'
+import 'babel-polyfill'
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.BROWSER': true,
-  __DEV__: false
-};
+  __DEV__: false,
+}
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
   },
   devtool: 'source-map',
   entry: ['babel-polyfill', path.resolve(__dirname, 'server/client')],
@@ -22,7 +23,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'server/build/public'),
     publicPath: '/',
-    filename: 'client.js'
+    filename: 'client.js',
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
@@ -39,7 +40,7 @@ export default {
     new AssetsPlugin({
       path: path.resolve(__dirname, 'server/build'),
       filename: 'assets.json',
-    })
+    }),
   ],
   module: {
     rules: [
@@ -58,26 +59,24 @@ export default {
               loader: 'css-loader',
               options: {
                 minimize: true,
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             }, {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [
-                  require('autoprefixer')
-                ],
-                sourceMap: true
-              }
+                plugins: () => [autoprefixer],
+                sourceMap: true,
+              },
             }, {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      }
-    ]
-  }
-};
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
+      },
+    ],
+  },
+}

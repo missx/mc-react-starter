@@ -1,15 +1,16 @@
-import routesPaths from './constants/routesPaths';
-import HomePage from './containers/HomePage';
-import NotFoundPage from './containers/NotFoundPage';
+import routesPaths from './constants/routesPaths'
+import HomePage from './containers/HomePage'
+import NotFoundPage from './containers/NotFoundPage'
 
 const routes = [
   {
     path: routesPaths.index,
-    component: HomePage
+    component: HomePage,
+    exact: true,
   },
   {
-    component: NotFoundPage
-  }
-];
+    component: NotFoundPage,
+  },
+]
 
-export default routes;
+export default routes

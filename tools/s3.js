@@ -21,7 +21,6 @@ class s3 {
           reject(`error listing bucket objects ${err}`);
           return;
         }
-        
         const items = data.Contents;
 
         if (items.length === 0) {

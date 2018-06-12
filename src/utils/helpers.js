@@ -1,10 +1,10 @@
-import queryString from 'query-string';
-import isEmpty from 'lodash/isEmpty';
+import queryString from 'query-string'
+import isEmpty from 'lodash/isEmpty'
 
 export const applyQueryParams = (url, params = {}) => {
   if (isEmpty(params)) {
-    return url;
+    return url
   }
-  const queryParams = queryString.stringify(params);
-  return `${url}?${queryParams}`;
-};
+  const queryParams = queryString.stringify(params)
+  return `${url}?${queryParams}`
+}
