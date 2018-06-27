@@ -2,9 +2,15 @@
 
 // components
 @import './components/logo';
+@import './components/imageTile';
+@import './components/tileCaption';
+@import './components/videoTile';
+@import './components/checkTile';
+@import './components/tileOverlay';
 
 // pages
 @import './pages/home';
+@import './pages/welcomePage';
 
 $red: 'green';
 

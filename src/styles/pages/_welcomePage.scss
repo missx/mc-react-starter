@@ -1,0 +1,42 @@
+.section-courses-header {
+  position: relative;
+  text-align: center;
+  padding: 5.2rem 0 0;
+
+  &__gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50rem;
+    z-index: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(255, 255, 255, .075));
+  }
+}
+
+.section-courses-grid {
+  padding: 6rem 0 7.2rem;
+}
+
+.section-courses-footer {
+  @include transition($transition-fade);
+  position: fixed;
+  padding: 2.6rem 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $white;
+  text-align: center;
+  z-index: 6;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+
+
+.tile--loading {
+  background: #111;
+}
